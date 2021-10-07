@@ -2,11 +2,11 @@ import { PointManagement } from './PointManagement';
 
 let pointManagement: PointManagement;
 
-beforeEach(() => {
+beforeAll(() => {
   pointManagement = new PointManagement(100);
 });
 
-afterEach(() => {
+afterAll(() => {
   pointManagement.clear();
 });
 
@@ -16,6 +16,6 @@ it('add 1', () => {
 });
 
 it('sub 1', () => {
-  expect(pointManagement.sub(1)).toBe(99);
-  expect(pointManagement.total).toBe(99);
+  expect(pointManagement.sub(1)).toBe(100);
+  expect(pointManagement.total).toBe(100);
 });
