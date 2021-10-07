@@ -4,7 +4,7 @@ describe('forEach', () => {
   let mockCallback: jest.Mock<any, any>;
 
   beforeEach(() => {
-    mockCallback = jest.fn((x) => 42 + x);
+    mockCallback = jest.fn().mockReturnValueOnce(200).mockReturnValueOnce(300);
     forEach([0, 1], mockCallback);
   });
 
@@ -21,6 +21,10 @@ describe('forEach', () => {
   });
 
   test('return value of the first call', () => {
-    expect(mockCallback.mock.results[0].value).toBe(42);
+    expect(mockCallback.mock.results[0].value).toBe(200);
+  });
+
+  test('return value of the second call', () => {
+    expect(mockCallback.mock.results[1].value).toBe(300);
   });
 });
